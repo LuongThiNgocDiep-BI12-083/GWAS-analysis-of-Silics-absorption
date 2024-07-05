@@ -1,0 +1,75 @@
+.admin_body{
+    margin: 0 10%;
+}
+
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+}
+
+button:focus,
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-family: sans-serif;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+}
+
+.active:focus,
+.active{
+    border-bottom: 2px solid #007bff;
+    font-weight: bold;
+    outline: none;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: fit-content;
+}
+
+#rm_btn {
+    background-color: transparent;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#change_role{
+    background-color: transparent;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button img{
+    width: 30px;
+}
+
+.navbar-nav .nav-item:last-child{
+    pointer-events: none;
+    color: white;
+    user-select: none;
+}

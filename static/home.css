@@ -1,0 +1,107 @@
+:root {
+  --primary: #007bff;
+  --secondary: #bfc0c0;
+  --white: #fff;
+  --text-clr: #222222;
+  --header-clr: #25273d;
+  --next-btn-hover: #0044ff;
+  --back-btn-hover: #8b8c8c;
+}
+
+.form {
+    max-width: 70%;
+    margin: 0 auto;
+}
+.head{
+  display: flex;
+  justify-content: space-between;
+}
+.file-list {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+  gap: 4px;
+}
+.title{
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+}
+.link li{
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  max-width: 1000px;
+  min-width: 400px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  gap: 4px;
+  align-items: center;
+}
+.link, .link:hover{
+  width: 100%;
+  color: #000;
+  text-decoration: none;
+  padding: 10px 0;
+}
+.file-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.file-list li {
+  /* margin-bottom: 10px; */
+  list-style-type: none;
+}
+
+.file-list .close {
+  position: absolute;
+  top: 25%;
+  left: 95%;
+  transform: translateX(-50%);
+  border: none;
+  background-color: transparent;
+  color: #999;
+  cursor: pointer;
+  font-size: 30px;
+  display: block;
+}
+.input{
+  display: flex;
+}
+#folderName{
+  position: relative;
+  height: 70%;
+  width: 60%;
+  right: 10%;
+}
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 70%; 
+  background-color: #05F;
+  color: #fff;
+
+}
+.btn:hover{
+  background-color: #27408B;
+  color: #fff;
+}
+.icon-folder{
+  padding-right: 1%;
+}
+.file-list:not(.title-folder) {
+  transition: background-color 0.2s ease-in;
+}
+
+.file-list:not(.title-folder):hover {
+  background-color: lightblue;
+}

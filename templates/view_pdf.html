@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Viewer</title>
+</head>
+<body>
+    <h1>PDF Viewer</h1>
+    {% for image in images %}
+        <img src="data:image/ppm;base64,{{ image }}" alt="Page {{ loop.index }}">
+        <br>
+    {% endfor %}
+</body>
+</html>

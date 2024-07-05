@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+{% block title %}Select{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/select_column.css">
+<div class="box">
+    <form method="post">
+        <h1>Select Attributes to Display</h1>
+        <label for="selectAll">
+            <input type="checkbox" id="selectAll"> Select All
+        </label>
+        <br>
+        {% for column in columns %}
+            <input type="checkbox" name="columns" value="{{ column }}" class="columnCheckbox" > {{ column }}<br>
+        {% endfor %}
+        <br>
+        <button type="submit">Show</button>
+    </form>
+
+</div>
+<script>
+    // Add event listener to select all checkbox
+    document.getElementById('selectAll').addEventListener('click', function () {
+        var checkboxes = document.querySelectorAll('.columnCheckbox');
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = this.checked;
+        }
+    });
+</script>
+{% endblock %}
+

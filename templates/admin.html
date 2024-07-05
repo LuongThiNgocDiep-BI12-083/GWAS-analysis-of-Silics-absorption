@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/admin.css">
+<body>
+    <div class="admin_body">
+        <br>
+        <h1 align="center">Welcome back, admin</h1>
+        <button onclick="toggleSlide('A')" id="user_btn" class="active">Users</button>
+        <button onclick="toggleSlide('B')" id="admin_btn">Admins</button>
+        <div class="slider-container">
+        <div class="slider-content" id="sliderContent">
+            <div class="slide" id="slideA">
+                <form action="" method="POST">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for customer in user %}
+                            {% if customer.role==2 %}
+                            <tr>
+                                <td>{{ customer.username }}</td>
+                                <td>{{ customer.email }}</td>
+                                <td>
+                                    <button title="Delete user" id="rm_btn" onclick="deleteUser('{{ customer.id }}')">
+                                        <img src="../static/images/delete.png" alt="">
+                                    </button>
+                                    <button title="Change role" id="change_role" onclick="changeRole('{{ customer.id }}')">
+                                        <img src="../static/images/change_role.png" alt="">
+                                    </button>
+                                </td>
+                            </tr>
+                            {%endif%}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="slide" id="slideB">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in user %}
+                        {% if customer.role==3 %}
+                        <tr>
+                            <td>{{ customer.username }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>
+                                <button title="Delete user" id="rm_btn" onclick="deleteUser('{{ customer.id }}')">
+                                    <img src="../static/images/delete.png" alt="">
+                                </button>
+                                <button title="Change role" id="change_role" onclick="changeRole('{{ customer.id }}')">
+                                    <img src="../static/images/change_role.png" alt="">
+                                </button>
+                            </td>
+                        </tr>
+                        {%endif%}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+<script src="../static/admin.js"></script>
+{% endblock %}
