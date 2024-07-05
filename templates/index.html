@@ -4,15 +4,14 @@
 
 <link rel="stylesheet" href="../static/login.css">
 <div id="blur" class="hide"></div>
-<div id="popup_login" class="hide">
+
+<div id="popup_login" class="hide popup_form">
     <form action="/login" method="post">
         <h1 align="center">Login</h1>
-
         <div class="form-group">
             <label for="username">Username</label>
             <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
         </div>
-
         <div class="form-group">
             <label for="password">Password</label>
             <div id="password_container">
@@ -20,43 +19,34 @@
                 <img src="../static/images/eye-show.png" alt="" id="icon">
             </div>
         </div>
-
         <br>
         <button type="submit" class="btn btn-primary">Login</button> <br>
         <a href="{{url_for('forgot')}}" class="reset_pass">Forgot password ?</a>
     </form>
 </div>
 
-<script src="../static/login.js"></script>
-
-<div id="blur" class="hide"></div>
-<div id="popup_sign_up" class="hide">
-    <link rel="stylesheet" href="../static/sign_up.css">
+<div id="popup_sign_up" class="hide popup_form">
     <form action="/sign-up" method="post">
         <h1 align="center">Create an account</h1>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" , placeholder="Enter email">
-
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
         </div>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="username" class="form-control" id="username" name="username" , placeholder="Enter username">
-
+            <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <div id="password_container">
-                <input type="password" class="form-control" id="password" name="password" ,
-                    placeholder="Enter password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                 <img src="../static/images/eye-show.png" alt="" id="icon">
             </div>
         </div>
         <div class="form-group">
             <label for="re-password">Confirm Password</label>
             <div id="password_container">
-                <input type="password" class="form-control" id="re-password" name="re-password" ,
-                    placeholder="Enter password">
+                <input type="password" class="form-control" id="re-password" name="re-password" placeholder="Enter password">
                 <img src="../static/images/eye-show.png" alt="" id="re-icon">
             </div>
         </div>
@@ -65,6 +55,7 @@
     </form>
 </div>
 
+<script src="../static/login.js"></script>
 
 <div class="header">
     <link rel="stylesheet" href="../static/index.css">
@@ -72,75 +63,60 @@
         <h1 class="title">Silicon Absorption Tool for Vietnamese Rice <br></h1>
     </div>
     <div class="form mt-4 text-center mx-auto text">
-        <p class="text1">Explore genetic insights effortlessly on our dedicated platform, meticulously crafted for limb
-            bone abnormality sequence processing.
-            Tailored for precision, our space streamlines analysis, offering a seamless experience for researchers and
-            healthcare professionals.
-            Welcome to the new era of genetic exploration in the field of data science and technology!</p>
+        <p class="text1">Explore genetic insights effortlessly on our dedicated platform, meticulously crafted for limb bone abnormality sequence processing. Tailored for precision, our space streamlines analysis, offering a seamless experience for researchers and healthcare professionals. Welcome to the new era of genetic exploration in the field of data science and technology!</p>
     </div>
-
-    <div class="form  text-center mx-auto">
+    <div class="form text-center mx-auto">
         <h1 class="begin"><strong>Bioinformatic tools</strong></h1>
     </div>
     <div class="box">
         <div class="tool-box">
-            <a href="https://www.bioinformatics.babraham.ac" target="_blank"
-                title="TASSEL">
+            <a href="https://www.bioinformatics.babraham.ac" target="_blank" title="TASSEL">
                 <p class="font-tool name">TASSEL</p>
                 <p class="font-tool content">TASSEL 5.0 can do everything you need</p>
             </a>
         </div>
     </div>
-
-
 </div>
-<div class="accuracy">
+
+<div class="our-story-section">
+    <h2 class="title-story">Our Story</h2>
+    <div class="box-story">
+        <p>Currently, the field of Information and Communication Technology (ICT) is rapidly advancing globally, especially in the medical sector, particularly in the detection of bone abnormalities. Researchers have integrated information technology into their studies, developing various bioinformatics tools. However, most of these tools function independently and have limited fixed features, such as Clustal X (used for comparing and aligning nucleotide or protein sequences) and SeqVerter (converting between DNA or protein sequence formats). Nevertheless, the standalone nature and limited functionality of these tools pose challenges, as researchers often need to input and output data multiple times, consuming considerable time and effort but the final results may still be inaccurate.</p>
+        
+        <br>
+        
+        <h3 class="our-story-subtitle">The Problem</h3>
+        <p>Recognizing this reality, our team conceived and developed a website that connects suitable bioinformatics tools. Our software specifically supports the processing of limb bone abnormality data.</p>
+        
+        <br>
+        
+        <h3 class="our-story-subtitle">Our Solution</h3>
+        <p>This project not only combines the fields of information science and biological technology but also addresses the practical challenges faced by researchers. We hope that this project will contribute to the advancement of bioinformatics software technology and serve as a significant step forward for research in this domain.</p>
+    </div>
+</div>
+
+<div class="accuracy-section">
     <h2 class="title title-accuracy">Accurate - Simplified</h2>
     <div class="box-accuracy">
         <div class="accuracy-box">
-            <div class="accuracy_img">
+            <div class="accuracy-img">
                 <img src="/static/images/dart.png" alt="dart">
             </div>
             <h3 class="accuracy-title">High Accuracy</h3>
-            <p class="accuracy-text">Our bioinformatics tools delivered impressive performance, revealing a remarkable
-                mapping with high accuracy.
-                These robust results underscore the reliability and effectiveness of our website.</p>
+            <p class="accuracy-text">Our bioinformatics tools delivered impressive performance, revealing a remarkable mapping with high accuracy. These robust results underscore the reliability and effectiveness of our website.</p>
         </div>
         <div class="accuracy-box">
-            <div class="accuracy_img">
+            <div class="accuracy-img">
                 <img src="/static/images/Web designers working on website design.png" alt="dart">
             </div>
             <h3 class="accuracy-title">User-friendly design</h3>
-            <p class="accuracy-text">Our user-centric website combines simplicity and a friendly interface,
-                ensuring accessibility for all users. Its intuitive design facilitates easy navigation,
-                enhancing the overall user experience</p>
+            <p class="accuracy-text">Our user-centric website combines simplicity and a friendly interface, ensuring accessibility for all users. Its intuitive design facilitates easy navigation, enhancing the overall user experience.</p>
         </div>
     </div>
 </div>
-<div class="accuracy">
-    <h2 class="title title-accuracy">Our Platforms are <br> Designed Specifically For</h2>
-    <div class="box-accuracy">
-        <div class="accuracy-box">
-            <div class="accuracy_img">
-                <img src="/static/images/set of test tubes.png" alt="">
-            </div>
-            <h3 class="accuracy-title">Advancements in Research</h3>
-            <p class="accuracy-text">Scientists and researchers can utilize our software as a solution for conducting
-                comprehensive investigations into the genetic foundations of limb bone abnormalities.
-                This contributes to the broader scientific knowledge and understanding of these conditions.</p>
-        </div>
-        <div class="accuracy-box">
-            <div class="accuracy_img">
-                <img src="/static/images/Scientific research and experiment in science laboratory.png" alt="">
-            </div>
-            <h3 class="accuracy-title">Carrier Screening Test</h3>
-            <p class="accuracy-text">This platform can contribute to the screening of couples for the
-                potential risk of passing on specific genetic conditions to their children.</p>
-        </div>
-    </div>
-</div>
+
 <footer class="footer">
-    <img src="../static/images/background_image.jpg" alt="Backgournd" class="bg_footer">
+    <img src="../static/images/background_image.jpg" alt="Background" class="bg_footer">
     <img src="/static/images/usth_footer.png" alt="" class="img-logo">
     <div class="box-footer">
         <div class="footer-left">
@@ -157,8 +133,7 @@
         </div>
         <div class="content-right">
             <h3 class="footer-title">Get in touch</h3>
-            <p class="footer-text">A21 building, Vietnam Academy of Science <br>
-                and Technology, 18 Hoang Quoc Viet, Cau Giay, Hanoi</p>
+            <p class="footer-text">A21 building, Vietnam Academy of Science <br> and Technology, 18 Hoang Quoc Viet, Cau Giay, Hanoi</p>
             <p class="footer-text">+84-24 37 91 69 60</p>
             <a href="mailto:officeusth@usth.edu.vn">
                 <p class="footer-text" title="Mail to USTH">officeusth@usth.edu.vn</p>
@@ -166,4 +141,5 @@
         </div>
     </div>
 </footer>
+
 {% endblock %}
