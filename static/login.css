@@ -17,11 +17,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-radius: 0.25rem;
+    /* border-radius: 0.25rem; */
     width: 100%;
     outline: 0;
     border: 1px solid lightgray;
-    border-radius: 8px;
 }
 
 form{
@@ -29,6 +28,7 @@ form{
     flex-direction: column;
     align-items: center;
     position: relative;
+    padding: 100px;
 }
 
 .form-group{
@@ -45,9 +45,11 @@ form{
     box-shadow: none;
 }
 
+#re-password,
 #password{
     width: 95%;
     border: none;
+    
 }
 
 .btn{

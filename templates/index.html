@@ -2,7 +2,7 @@
 {% block title %}Homepage{% endblock %}
 {% block content %}
 
-<link rel="stylesheet" href="../static/login.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 <div id="blur" class="hide"></div>
 
 <div id="popup_login" class="hide popup_form">
@@ -10,18 +10,19 @@
         <h1 align="center">Login</h1>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <div id="password_container">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-                <img src="../static/images/eye-show.png" alt="" id="icon">
+                <img src="{{ url_for('static', filename='images/eye-show.png') }}" alt="Show password" id="icon">
             </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Login</button> <br>
-        <a href="{{url_for('forgot')}}" class="reset_pass">Forgot password ?</a>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <br>
+        <a href="{{ url_for('forgot') }}" class="reset_pass">Forgot password?</a>
     </form>
 </div>
 
@@ -34,20 +35,20 @@
         </div>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <div id="password_container">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-                <img src="../static/images/eye-show.png" alt="" id="icon">
+                <img src="{{ url_for('static', filename='images/eye-show.png') }}" alt="Show password" id="icon">
             </div>
         </div>
         <div class="form-group">
             <label for="re-password">Confirm Password</label>
             <div id="password_container">
                 <input type="password" class="form-control" id="re-password" name="re-password" placeholder="Enter password">
-                <img src="../static/images/eye-show.png" alt="" id="re-icon">
+                <img src="{{ url_for('static', filename='images/eye-show.png') }}" alt="Show password" id="re-icon">
             </div>
         </div>
         <br>
@@ -55,56 +56,53 @@
     </form>
 </div>
 
-<script src="../static/login.js"></script>
+<script src="{{ url_for('static', filename='login.js') }}"></script>
 
 <div class="header">
-    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
     <div class="form text-center mx-auto range">
-        <h1 class="title">Silicon Absorption Tool for Vietnamese Rice <br></h1>
+        <h1 class="title">Tools for analyzing and visualizing data of silicon absorption in Vietnamese rice varieties</h1>
     </div>
     <div class="form text-center mx-auto">
-        <h1 class="begin"><strong>Bioinformatic tools</strong></h1>
-    </div>
-    <div class="box">
-        <div class="tool-box" style="margin-top: 15px">
-            <a href="https://www.bioinformatics.babraham.ac" target="_blank" title="TASSEL">
-                <p class="font-tool name">TASSEL</p>
-                <p class="font-tool content">TASSEL 5.0 can do everything you need</p>
-            </a>
-        </div>
+        <p>Welcome to the cutting-edge bioinformatics web tool designed for analyzing and visualizing sequence data related to silicon absorption in Vietnamese rice varieties. Our website offers user-friendly interfaces for seamless data processing and insightful visualization, enhancing research efficiency.</p>
     </div>
 </div>
 
 <div class="our-story-section">
-    <h2 class="title-story">Our Story</h2>
-    <div class="box-story">
-        <p>Currently, the field of Information and Communication Technology (ICT) is rapidly advancing globally, especially in the medical sector, particularly in the detection of bone abnormalities. Researchers have integrated information technology into their studies, developing various bioinformatics tools. However, most of these tools function independently and have limited fixed features, such as Clustal X (used for comparing and aligning nucleotide or protein sequences) and SeqVerter (converting between DNA or protein sequence formats). Nevertheless, the standalone nature and limited functionality of these tools pose challenges, as researchers often need to input and output data multiple times, consuming considerable time and effort but the final results may still be inaccurate.</p>
+    <h2 class="title-story" style="text-align: center;">Our Story</h2>
+    <div class="box-story">        
+        <!-- <h3 class="our-story-subtitle">The Problem</h3> -->
+        <p><strong>The Problem: </strong>Understanding the genetic mechanisms governing silicon (Si) uptake in rice is important for improving agricultural productivity and sustainability. Current tools for Si identification are fragmented, complex, and require significant computational expertise, slowing research progress.</p>
         
-        <br>
-        
-        <h3 class="our-story-subtitle">The Problem</h3>
-        <p>Recognizing this reality, our team conceived and developed a website that connects suitable bioinformatics tools. Our software specifically supports the processing of limb bone abnormality data.</p>
-        
-        <br>
-        
-        <h3 class="our-story-subtitle">Our Solution</h3>
-        <p>This project not only combines the fields of information science and biological technology but also addresses the practical challenges faced by researchers. We hope that this project will contribute to the advancement of bioinformatics software technology and serve as a significant step forward for research in this domain.</p>
+        <!-- <h3 class="our-story-subtitle">Our Solution</h3> -->
+        <p><strong>Our Solution:</strong> We are developing integrated, user-friendly software tools to automate data processing tasks related to Si uptake in rice. These tools streamline workflows minimizing labor and errors and have a user-friendly interface.</p>
+    </div>
+    <div class="box">
+        <div class="tool-box" style="margin-top: 15px">
+            <a href="https://tassel.bitbucket.io/" target="_blank" title="TASSEL">
+                <img src="../static/images/Tassel_Logo128.png" alt="Tassel">
+                <p class="font-tool name">TASSEL</p>
+            </a>
+        </div>
+        <p>TASSEL 5.0 is crucial in our bioinformatics project on processing data of silicon absorption in Vietnamese rice. It excels in genetic analysis, offering tools for efficient data processing and visualization. Using its command line interface, we manage large-scale genetic data, perform complex statistical analyses like MLM to identify key genetic markers and generate Q-Q plots and Manhattan plots. This is very useful in visualizing data into diagram that help users easily get accurate results.</p>
     </div>
 </div>
 
+
+
 <footer class="footer">
-    <img src="../static/images/background_image.jpg" alt="Background" class="bg_footer">
-    <img src="/static/images/usth_footer.png" alt="" class="img-logo">
+    <img src="{{ url_for('static', filename='images/background_image.jpg') }}" alt="Background" class="bg_footer">
+    <img src="{{ url_for('static', filename='images/usth_footer.png') }}" alt="USTH Logo" class="img-logo">
     <div class="box-footer">
         <div class="footer-left">
             <h3 class="footer-title">Site map</h3>
-            <a href="{{url_for('ourstory')}}" id="ourstory">
+            <a href="{{ url_for('ourstory') }}" id="ourstory">
                 <p class="footer-text">Our Story</p>
             </a>
-            <a href="{{url_for('pipeline')}}" id="pipeline">
+            <a href="{{ url_for('pipeline') }}" id="pipeline">
                 <p class="footer-text">Bioinformatics Pipeline</p>
             </a>
-            <a href="{{url_for('demo')}}" id="demo">
+            <a href="{{ url_for('demo') }}" id="demo">
                 <p class="footer-text">Demo</p>
             </a>
         </div>

@@ -76,6 +76,7 @@ h2.title {
 
 .create-btn:hover {
   background-color: var(--back-btn-hover);
+  color: white !important;
 }
 
 .file-list {
@@ -140,17 +141,16 @@ h2.title {
 }
 
 .file-list .close {
-  background-color: transparent;
+  position: absolute;
+  top: 25%;
+  left: 95%;
+  transform: translateX(-50%);
   border: none;
+  background-color: transparent;
   color: #999;
-  font-size: 20px;
   cursor: pointer;
-  transition: color 0.3s ease;
-  margin-left: 10px;
-}
-
-.file-list .close:hover {
-  color: #333;
+  font-size: 30px;
+  display: block;
 }
 
 /* Modal styles */
@@ -238,13 +238,13 @@ h2.title {
 .file-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px; /* Adjust margin as needed */
+  margin-top: 20px;
 }
 
 .file-table th, .file-table td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #ddd; /* Border bottom for each row */
+  border-bottom: 1px solid #ddd;
 }
 
 .file-table th {
@@ -253,18 +253,18 @@ h2.title {
 
 /* Folder name and modified date styles */
 .folder-name {
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .folder-modified {
-  font-style: italic; /* Italics for modified date */
+  font-style: italic;
 }
 
 /* Icon styles */
 .icon-folder {
-  width: 20px; /* Adjust icon size as needed */
+  width: 20px;
   height: 20px;
-  margin-right: 5px; /* Space between icon and folder name */
+  margin-right: 5px;
 }
 
 /* Delete button styles */
@@ -279,5 +279,5 @@ h2.title {
 }
 
 .close button:hover {
-  color: red; /* Change color on hover */
+  color: red;
 }

@@ -233,14 +233,18 @@ def get_folder(folder_id):
 
     subfolders = Folder.query.filter_by(parent_folder_id=folder.id).all()
     subfiles = File.query.filter_by(folder_id=folder.id).all()
-    output=[]
+    snps=[]
+    preprocess=[]
     files=[]
     for file in subfiles:
         if file.name.endswith(".csv") or file.name.startswith("r.") or file.name.endswith("pdf") or file.name.startswith("List "):
-            output.append(file)
+            if file.name.endswith(".csv") and file.name!="Rplots.pdf":
+                snps.append(file)
+            else:
+                preprocess.append(file)
         else:
             files.append(file)
-    return render_template('folder.html', folder=folder, subfolders=subfolders, file = file, subfiles = files, output=output, user = current_user)
+    return render_template('folder.html', folder=folder, subfolders=subfolders, file = file, subfiles = files, preprocess=preprocess, snps=snps, user = current_user)
 
 @app.route('/file/<file_id>', methods = ['GET', 'POST'])
 @login_required

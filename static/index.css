@@ -13,19 +13,17 @@
 #popup_login {
     background-color: white;
     position: absolute;
-    left: 35%;
-    top: 140px;
-    height: 350px;
-    border-radius: 20px;
+    left: 20%;
+    top: 100px;
+    height: calc(fit-content + 50px);
 }
 
 #popup_sign_up {
     background-color: white;
     position: absolute;
-    left: 35%;
-    top: 140px;
-    height: 500px;
-    border-radius: 20px;
+    left: 20%;
+    top: 80px;
+    height: calc(fit-content + 20px);
 }
 
 body #blur {
@@ -39,195 +37,82 @@ body #blur {
     left: 0;
 }
 
-/* Background image */
+/* Header */
 .header {
     position: relative;
     width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
     height: 600px;
-    padding-bottom: 1%;
-}
-
-.header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('/static/images/licensed-image.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(3px);
-    z-index: -1;
-}
-
-.form {
-    color: #fff;
-}
-
-.title {
-    text-align: center;
-    font-size: 65px;
-    font-weight: 700;
-    line-height: 80px;
-    padding-top: 5%;
-}
-
-.range {
-    width: 90%;
-}
-
-.text {
-    width: 60%;
-}
-
-.text1 {
-    font-size: medium;
-    text-align: justify;
-    margin: 20px 0;
-}
-
-a,
-a:hover {
-    text-decoration: none;
-}
-
-.box {
-    display: flex;
-    justify-content: center;
-}
-
-.tool-box a {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-decoration: none;
+    color: white;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/licensed-image.png') no-repeat center center/cover;
 }
 
-.tool-box {
-    width: 293px;
-    height: 130px;
-    flex-shrink: 0;
-    border-radius: 4px;
-    border: 1px solid #E8E8E8;
-    background: #FAFAFA;
-    margin: 2%;
-    margin-bottom: 0px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.tool-box:hover {
-    background-color: #f2f0f0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.font-tool {
-    color: #1A1A1A;
-    font-size: 16px;
-}
-
-.name {
+.header .title {
+    font-size: 50px;
     font-weight: 700;
-    line-height: 24px;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.content {
-    font-size: 14px;
-    line-height: 20px;
-    padding: 0 20px 20px 20px;
+.header .subtitle {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.header .form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
 /* Our Story Section */
 .our-story-section {
     background-color: #fff;
-    padding: 40px 0;
+    padding: 60px 20px;
+    text-align: left;
 }
 
 .title-story {
     color: #333;
-    font-size: 65px;
+    font-size: 40px;
     font-weight: 700;
-    line-height: 80px;
-    text-align: center;
     margin-bottom: 40px;
 }
 
+.box,
 .box-story {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 .our-story-subtitle {
     color: #333;
     font-size: 24px;
     font-weight: bold;
+    margin-top: 30px;
     margin-bottom: 10px;
-}
-
-
-/* Accuracy */
-
-.accuracy {
-    background: #F1F6FB;
-    width: 100%;
-}
-
-.title-accuracy {
-    color: #000;
-    font-size: 60px;
-}
-
-.box-accuracy {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 7%;
-}
-
-.accuracy-box {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 45%;
-}
-
-.accuracy_img {
-    display: flex;
-    justify-content: center;
-}
-
-.box-accuracy img {
-    width: 75%;
-}
-
-.accuracy-title {
-    color: #1A1A1A;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 52px;
-}
-
-.accuracy-text {
-    text-align: justify;
-    color: #697777;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 39px;
-    min-height: 250px;
 }
 
 /* Footer */
 .footer {
     width: 100%;
     height: fit-content;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
     overflow: hidden;
     position: relative;
@@ -246,9 +131,6 @@ a:hover {
     padding-top: 5%;
     padding-bottom: 5%;
     transition: all;
-}
-
-.footer .img-logo {
     width: 25%;
 }
 
@@ -256,17 +138,12 @@ a:hover {
     display: flex;
     justify-content: space-around;
     max-width: 70%;
-    margin-left: 15%;
-}
-
-.box-footer p {
-    margin: 0;
+    margin: 0 auto;
 }
 
 .footer-title {
     color: white;
     font-size: 30px;
-    font-style: normal;
     font-weight: 600;
     line-height: 52px;
 }
@@ -274,7 +151,53 @@ a:hover {
 .footer-text {
     text-align: justify;
     color: white;
-    font-style: normal;
     font-size: medium;
     cursor: pointer;
+    margin: 5px 0;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tool box styling */
+.tool-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Tool box hover effect */
+.tool-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tool box link styling */
+.tool-box a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+/* Tool box name styling */
+.tool-box .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Tool box content styling */
+.tool-box .content {
+    font-size: 14px;
+    color: #666;
 }

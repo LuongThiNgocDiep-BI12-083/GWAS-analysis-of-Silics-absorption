@@ -9,8 +9,13 @@
     --hover: #27408B;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 body{
-    font-family: sans-serif;
+    font-family:"Roboto";
+    /* overflow: auto; */
 }
 .alert{
     z-index: 9999;
