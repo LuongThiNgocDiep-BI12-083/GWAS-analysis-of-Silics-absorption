@@ -3,20 +3,6 @@
 {% block content %}
 <link rel="stylesheet" href="../static/folder.css">
   <div class="form">
-    <div class="step">
-      {% set sorted_subfiles = subfiles | sort(attribute='name') %}
-      <img src="../static/images/step1_color.png" alt="Step 1" class="step-1 step-image">
-      {% if sorted_subfiles |length == 2 %}
-        <img src="../static/images/step2_color.png" alt="Step 1" class="step-1 step-image">
-        {% else %}
-        <img src="../static/images/step2.png" alt="Step 1" class="step-1 step-image">
-      {% endif %}
-      {% if output |length != 0 %}
-        <img src="../static/images/step3_color.png" alt="Step 3" class="step-3 step-image">
-      {% else %}
-        <img src="../static/images/step3.png" alt="Step 3" class="step-3 step-image">
-      {% endif %}
-    </div>
 
     <h2 class="title head">Folder: {{ folder.name }}</h2>
     

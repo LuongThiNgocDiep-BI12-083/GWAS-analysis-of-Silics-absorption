@@ -6,102 +6,278 @@
   --header-clr: #25273d;
   --next-btn-hover: #0044ff;
   --back-btn-hover: #8b8c8c;
+  --modal-bg: #fefefe;
+  --modal-border: #888;
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  --folder-hover: lightblue;
 }
 
-.form {
-    max-width: 70%;
-    margin: 0 auto;
-}
-.head{
-  display: flex;
-  justify-content: space-between;
-}
-.file-list {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  border-radius: 5px;
-  align-items: center;
-  gap: 4px;
-}
-.title{
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 28px;
-}
-.link li{
-  display: flex;
-  flex-direction: row;
-  width: fit-content;
-  max-width: 1000px;
-  min-width: 400px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  gap: 4px;
-  align-items: center;
-}
-.link, .link:hover{
-  width: 100%;
-  color: #000;
-  text-decoration: none;
-  padding: 10px 0;
-}
-.file-list ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.file-list li {
-  /* margin-bottom: 10px; */
+li {
   list-style-type: none;
 }
 
-.file-list .close {
-  position: absolute;
-  top: 25%;
-  left: 95%;
-  transform: translateX(-50%);
-  border: none;
-  background-color: transparent;
-  color: #999;
-  cursor: pointer;
-  font-size: 30px;
-  display: block;
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text-clr);
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
 }
-.input{
+
+.form {
+  max-width: 70%;
+  margin: 0 auto;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.header-container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-#folderName{
-  position: relative;
-  height: 70%;
-  width: 60%;
-  right: 10%;
+
+h2.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--header-clr);
+  margin-bottom: 20px;
 }
-.btn{
+
+.create-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.create-btn {
+  background-color: var(--secondary);
+  border: 1px solid var(--secondary);
+  color: var(--text-clr);
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  height: 70%; 
-  background-color: #05F;
-  color: #fff;
+  gap: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
 
+.create-btn .plus-sign {
+  font-weight: bold;
 }
-.btn:hover{
-  background-color: #27408B;
-  color: #fff;
+
+.create-btn .dropdown-arrow {
+  font-size: 12px;
 }
-.icon-folder{
-  padding-right: 1%;
+
+.create-btn:hover {
+  background-color: var(--back-btn-hover);
 }
-.file-list:not(.title-folder) {
+
+.file-list {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
   transition: background-color 0.2s ease-in;
+  border-radius: 5px;
 }
 
-.file-list:not(.title-folder):hover {
-  background-color: lightblue;
+.file-list:hover {
+  background-color: var(--folder-hover);
+}
+
+.title-folder {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f1f1f1;
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+}
+
+.name-header {
+  flex: 2;
+  color: #666;
+  text-align: left;
+}
+
+.modified-header {
+  flex: 1;
+  color: #666;
+  text-align: right;
+}
+
+.folder-name {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.folder-modified {
+  flex: 1;
+  text-align: right;
+  color: #666;
+}
+
+.link:hover {
+  color: #0044ff;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon-folder {
+  width: 24px;
+  height: 24px;
+}
+
+.file-list .close {
+  background-color: transparent;
+  border: none;
+  color: #999;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-left: 10px;
+}
+
+.file-list .close:hover {
+  color: #333;
+}
+
+/* Modal styles */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 2; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: var(--modal-bg);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid var(--modal-border);
+  width: 80%;
+  max-width: 500px; 
+  border-radius: 5px;
+}
+
+.modal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Overlay styles */
+.overlay {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-bg);
+  backdrop-filter: blur(5px);
+}
+
+/* Input and button styles */
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#folderName {
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; 
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--next-btn-hover);
+}
+
+/* Table styles */
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+.file-table th, .file-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd; /* Border bottom for each row */
+}
+
+.file-table th {
+  background-color: #f2f2f2; /* Header background color */
+}
+
+/* Folder name and modified date styles */
+.folder-name {
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.folder-modified {
+  font-style: italic; /* Italics for modified date */
+}
+
+/* Icon styles */
+.icon-folder {
+  width: 20px; /* Adjust icon size as needed */
+  height: 20px;
+  margin-right: 5px; /* Space between icon and folder name */
+}
+
+/* Delete button styles */
+.close {
+  text-align: center;
+}
+
+.close button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.close button:hover {
+  color: red; /* Change color on hover */
 }

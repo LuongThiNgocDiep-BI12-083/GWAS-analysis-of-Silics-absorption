@@ -15,6 +15,16 @@
     position: absolute;
     left: 35%;
     top: 140px;
+    height: 350px;
+    border-radius: 20px;
+}
+
+#popup_sign_up {
+    background-color: white;
+    position: absolute;
+    left: 35%;
+    top: 140px;
+    height: 500px;
     border-radius: 20px;
 }
 
