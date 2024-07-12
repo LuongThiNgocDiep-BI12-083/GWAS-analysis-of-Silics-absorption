@@ -221,6 +221,13 @@ def get_folder(folder_id):
                 db.session.add(new_file)
                 db.session.commit()
 
+    if os.path.exists(f"{folder_data_dir}/{current_user.username}/Total_plots.pdf"):
+        file = File.query.filter_by(name="Total_plots.pdf").first()
+        if file is None:
+            new_file = File(name="Total_plots.pdf", path=f"{folder_data_dir}/{current_user.username}/Total_plots.pdf",user_id=current_user.id, folder_id=folder.id)
+            db.session.add(new_file)
+            db.session.commit()
+
     files = [file for file in os.listdir(f"{folder_data_dir}/{current_user.username}")]
     for file in files:
         if file.endswith("significant SNPs.txt"):
@@ -238,7 +245,7 @@ def get_folder(folder_id):
     files=[]
     for file in subfiles:
         if file.name.endswith(".csv") or file.name.startswith("r.") or file.name.endswith("pdf") or file.name.startswith("List "):
-            if file.name.endswith(".csv") and file.name!="Rplots.pdf":
+            if file.name.endswith(".csv") or file.name=="Total_plots.pdf":
                 snps.append(file)
             else:
                 preprocess.append(file)
@@ -253,7 +260,7 @@ def get_file(file_id):
     file_path = file.path
 
     if file.name.endswith(".pdf"):
-        pdf_path = f"{folder_data_dir}/{current_user.username}/Rplots.pdf"
+        pdf_path = f"{folder_data_dir}/{current_user.username}/{file.name}"
         doc = fitz.open(pdf_path)
         images = []
         for page_num in range(len(doc)):

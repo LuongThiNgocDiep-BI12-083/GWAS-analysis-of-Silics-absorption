@@ -13,7 +13,7 @@
 #popup_login {
     background-color: white;
     position: absolute;
-    left: 20%;
+    left: 30%;
     top: 100px;
     height: calc(fit-content + 50px);
 }
@@ -21,8 +21,7 @@
 #popup_sign_up {
     background-color: white;
     position: absolute;
-    left: 20%;
-    top: 80px;
+    left: 30%;
     height: calc(fit-content + 20px);
 }
 
