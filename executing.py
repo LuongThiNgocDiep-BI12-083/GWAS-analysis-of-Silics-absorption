@@ -11,7 +11,7 @@ def execute_file(folder, current_user):
     try:
         preprocessing(folder)
         mlm(current_user, folder, f"{folder.path}.hmp.txt")
-        total_plot(current_user)
+        # total_plot(current_user)
     except Exception as e:
         print("Error while executing:",e)
 

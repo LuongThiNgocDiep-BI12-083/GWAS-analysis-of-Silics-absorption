@@ -187,7 +187,10 @@ def get_folder(folder_id):
             sub_file = request.files['inputFile2']
             
             if sub_file.filename != '':
-                file_name=f"{folder.name}_2.fastq.gz"
+                if sub_file.filename.endswith(".hmp.txt"):
+                    file_name=f"{folder.name}.hmp.txt"
+                elif sub_file.filename.endswith(".csv") or sub_file.filename.endswith("xlsx"):
+                    file_name=f"{folder.name}.xlsx"
                 path=f"{folder_data_dir}/{current_user.username}"
                 path+=f"/{file_name}"
                 file=File.query.filter_by(path=path).first()
@@ -496,11 +499,15 @@ def is_file_in_folder(file, folder):
 
 def delete_folder_recursive(folder_id):
     folder = Folder.query.filter_by(id=folder_id).first()
+    print(folder.path)
     if folder is None:
         return jsonify({"Status":"Fail"})
 
-    # Delete files in the current folder
-    delete_files_in_folder(folder.id)
+    try:
+        # Delete files in the current folder
+        delete_files_in_folder(folder.id)
+    except Exception as e:
+        print(e)
 
     # Delete the current folder
     db.session.delete(folder)
