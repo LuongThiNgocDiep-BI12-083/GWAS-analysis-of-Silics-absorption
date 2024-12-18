@@ -14,7 +14,7 @@ import pandas as pd
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a secrect key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Account.db'
-folder_data_dir = '../folder_data'
+folder_data_dir = './folder_data'
 os.environ['R_HOME'] = 'C:\Program Files\R\R-4.4.0'
 
 db.init_app(app)
