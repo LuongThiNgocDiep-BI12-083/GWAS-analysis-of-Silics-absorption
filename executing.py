@@ -1,5 +1,4 @@
 import subprocess, os
-import rpy2.robjects as robjects
 from app import folder_data_dir
 from script.mlm import execute
 from script.plot_manhattan_qq import plot
