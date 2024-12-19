@@ -80,7 +80,6 @@ def login():
                 flash('Incorrect password! Try again!', category='error')
         else:
             flash('User does not exist!', category='error')
-    # return render_template("login.html")
 
 @app.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
@@ -144,7 +143,6 @@ def folder():
                 folder=Folder.query.filter_by(path=folder_path).first()
                 if folder==None:
 
-                    # Add folder to database
                     new_folder = Folder(path = folder_path,name= folder_name, user_id = current_user.id)
                     db.session.add(new_folder)
                     db.session.commit()
@@ -173,10 +171,8 @@ def get_folder(folder_id):
                 path+=f"/{file_name}"
                 file=File.query.filter_by(path=path).first()
                 if file==None:
-                    # Save the uploaded file to the specified path
                     sub_file.save(path)
 
-                    # Add the file to the database
                     new_file = File(name=file_name, path=path, user_id=current_user.id, folder_id=folder.id)
                     db.session.add(new_file)
                     db.session.commit()
@@ -195,10 +191,8 @@ def get_folder(folder_id):
                 path+=f"/{file_name}"
                 file=File.query.filter_by(path=path).first()
                 if file==None:
-                    # Save the uploaded file to the specified path
                     sub_file.save(path)
 
-                    # Add the file to the database
                     new_file = File(name=file_name, path=path, user_id=current_user.id, folder_id=folder.id)
                     db.session.add(new_file)
                     db.session.commit()
@@ -233,11 +227,17 @@ def get_folder(folder_id):
 
     files = [file for file in os.listdir(f"{folder_data_dir}/{current_user.username}")]
     for file in files:
-        if file.endswith("significant SNPs.txt"):
-            convert_to_csv(f"{folder_data_dir}/{current_user.username}/{file}", f"{folder_data_dir}/{current_user.username}/List of all significant SNPs.csv")
-            check_file = File.query.filter_by(name="List of all significant SNPs.csv").first()
+        if file.endswith("significant_SNPs.txt"):
+            convert_to_csv(f"{folder_data_dir}/{current_user.username}/{file}", f"{folder_data_dir}/{current_user.username}/{folder.name}_significant_SNPs.csv")
+            check_file = File.query.filter_by(name=f"{folder.name}_significant_SNPs.csv").first()
             if check_file == None:
-                new_file = File(name="List of all significant SNPs.csv", path=f"{folder_data_dir}/{current_user.username}/List of all significant SNPs.csv",user_id=current_user.id, folder_id=folder.id)
+                new_file = File(name=f"{folder.name}_significant_SNPs.csv", path=f"{folder_data_dir}/{current_user.username}/{folder.name}_significant_SNPs.csv",user_id=current_user.id, folder_id=folder.id)
+                db.session.add(new_file)
+                db.session.commit()
+        if file.endswith("_TotalPlot.pdf"):
+            check_file = File.query.filter_by(name = f"{folder.name}_TotalPlot.pdf").first()
+            if check_file == None:
+                new_file = File(name=f"{folder.name}_TotalPlot.pdf", path=f"{folder.path}_TotalPlot.pdf", user_id=current_user.id, folder_id=folder.id)
                 db.session.add(new_file)
                 db.session.commit()
 
@@ -248,7 +248,7 @@ def get_folder(folder_id):
     files=[]
     for file in subfiles:
         if file.name.endswith(".csv") or file.name.startswith("r.") or file.name.endswith("pdf") or file.name.startswith("List "):
-            if file.name.endswith(".csv") or file.name=="Total_plots.pdf":
+            if file.name.endswith(".csv") or file.name.endswith("_TotalPlot.pdf"):
                 snps.append(file)
             else:
                 preprocess.append(file)
@@ -284,19 +284,15 @@ def get_file(file_id):
             return file_content, 200, {'Content-Type': 'text/plain; charset=utf-8'}
     
     if request.method == 'POST':
-        # Take requests from form
         selected_columns = request.form.getlist('columns')
         
-        # Create dataframe for all the columns have choosed
         selected_df=df[selected_columns]
         temp_file_path = f'{folder_data_dir}/{current_user.username}/temp_selected_data.csv'
         selected_df.to_csv(temp_file_path, index=False)
         selected_df=selected_df.head(20)
 
-        # Conver dataframe to html
         table_html=selected_df.to_html(classes='table table-striped', index=False)
 
-        # Send data to user
         return render_template('display_columns.html', table_html=table_html, columns=df.columns, user=current_user, file=file)
     return render_template('select_columns.html', columns=df.columns,user = current_user)
     
@@ -360,17 +356,14 @@ def reset_password():
     email = request.args.get('email')
     
     if request.method == 'POST':
-        # Handle the password reset form submission
         password = request.form['password']
         re_password = request.form['re-password']
         
-        # Validate the password and re_password
         if password != re_password:
             flash('Passwords do not match!', category='error')
         elif len(password) < 7:
             flash('Password must be greater than 7 characters', category='error')
         else:
-            # Update the user's password in the database
             user = User.query.filter_by(email=email).first()
             if user:
                 hashed_password = generate_password_hash(password)
@@ -401,7 +394,6 @@ def execute_fatsq():
     except:
         return jsonify({"Status":"False"})
 
-# Admin
 @app.route('/admin', methods=['POST','GET'])
 @login_required
 def admin():
@@ -488,7 +480,6 @@ def rm_user():
         return redirect(url_for("/admin"))
 
 def is_file_in_folder(file, folder):
-    # Check if the file's folder matches the specified folder or any of its subfolders
     if file.folder_id == folder.id:
         return True
     elif folder.subfolders:
@@ -504,12 +495,10 @@ def delete_folder_recursive(folder_id):
         return jsonify({"Status":"Fail"})
 
     try:
-        # Delete files in the current folder
         delete_files_in_folder(folder.id)
     except Exception as e:
         print(e)
 
-    # Delete the current folder
     db.session.delete(folder)
     db.session.commit()
 

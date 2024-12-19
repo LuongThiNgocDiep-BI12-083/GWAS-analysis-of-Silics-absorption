@@ -1,13 +1,10 @@
 import csv
 
 def convert_to_csv(filepath, output, delimiter='\t'):
-    # Try reading the file with utf-8 encoding
     with open(filepath, 'r', encoding='utf-8') as txtfile:
         lines = [line.strip().split(delimiter) for line in txtfile.readlines()]
 
-    # Use the first line as the keys
     keys = lines[0]
-    # Convert the remaining lines into a list of dictionaries
     dict_list = [dict(zip(keys, line)) for line in lines[1:]]
 
     # # Create DataFrame

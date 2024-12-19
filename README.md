@@ -7,3 +7,5 @@ Need to setup Rscript
 How to run this project ?
 -> Download library base on requirement.txt
 -> Then "python app.py"
+
+kinship file need to change the real path to run
